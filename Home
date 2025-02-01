@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyslove Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div id="ageWarningPopup" class="popup-container">
+        <div class="popup-box">
+            <button id="closePopup" class="close-btn">&times;</button>
+            <h2 class="popup-title">Age Restriction Warning</h2>
+            <p class="popup-message">
+                This website contains content intended for mature audiences only. 
+                You must be at least 18 years old to access this site.
+            </p>
+            <div class="popup-buttons">
+                <button id="confirmAge" class="btn confirm-btn">I am 18 or older</button>
+                <button id="denyAge" class="btn deny-btn">I am below 18</button>
+            </div>
+        </div>
+    </div>
+    <div class="auth-container">
+        <div class="about-section">
+            <h2 class="about-title">About Us</h2>
+            <p class="about-description">
+                Welcome to the Boyslove Community, your ultimate destination for everything Boyslove! Dive into a world of captivating stories, from heartwarming series and thrilling movies to exclusive interviews with your favorite actors. Stay updated on upcoming shows, ongoing episodes, and the latest trends in Boyslove culture. Whether you're a long-time fan or new to the community, this is the place where passion meets creativity. Join us and celebrate love, diversity, and storytelling like never before!
+            </p>
+        </div>
+        <div class="form-container">
+            <h1 class="animated-title">
+                <span class="text-part">Welcome to the</span>
+                <span class="text-part cinematic-text">Boyslove Community</span>
+            </h1>
+            <div class="form-toggle">
+                <button id="loginToggle" class="toggle-btn active">Login</button>
+                <button id="signupToggle" class="toggle-btn">Sign Up</button>
+            </div>
+            <form id="loginForm" class="auth-form active">
+                <div class="input-group">
+                    <label for="loginUsername">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="24" height="24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        Username
+                    </label>
+                    <input type="text" id="loginUsername" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="24" height="24">
+                            <path d="M6 20h12V10H6v10zm6-7c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z"/>
+                        </svg>
+                        Password
+                    </label>
+                    <div style="position: relative;">
+                        <input type="password" id="loginPassword" name="password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="20" height="20">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn" id="submitButton">
+                    <span class="btn-text">Login</span>
+                    <div class="spinner hidden" id="spinner"></div>
+                </button>
+                <p id="loginError" class="error-message"></p>
+                <div class="social-auth">
+                    <button class="social-btn google" onclick="handleGoogleAuth()">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="logo-icon"> Login with Google
+                    </button>
+                    <button class="social-btn facebook" onclick="handleFacebookAuth()">
+                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook Logo" class="logo-icon"> Login with Facebook
+                    </button>
+                </div>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <div class="input-group">
+                    <label for="signupUsername">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="24" height="24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        Username
+                    </label>
+                    <input type="text" id="signupUsername" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupEmail">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="24" height="24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10z"/>
+                        </svg>
+                        Email
+                    </label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="24" height="24">
+                            <path d="M6 20h12V10H6v10zm6-7c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z"/>
+                        </svg>
+                        Password
+                    </label>
+                    <div style="position: relative;">
+                        <input type="password" id="signupPassword" name="password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" width="20" height="20">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <p id="signupError" class="error-message"></p>
+                <div class="social-auth">
+                    <button class="social-btn google" onclick="handleGoogleAuth()">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="logo-icon"> Sign Up with Google
+                    </button>
+                    <button class="social-btn facebook" onclick="handleFacebookAuth()">
+                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook Logo" class="logo-icon"> Sign Up with Facebook
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
